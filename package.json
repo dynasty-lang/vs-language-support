@@ -1,0 +1,25 @@
+{
+    "name": "language-support",
+    "displayName": "Dynasty Language Support",
+    "description": "Dynasty language support for vs code.",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.53.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "dynasty",
+            "aliases": ["Dynasty Language", "dynasty"],
+            "extensions": [".dn"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "dynasty",
+            "scopeName": "source.dynastylang",
+            "path": "./syntaxes/dynasty.tmLanguage.json"
+        }]
+    }
+}

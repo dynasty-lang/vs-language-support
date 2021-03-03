@@ -1,0 +1,179 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Dynasty Language",
+  "patterns": [
+    {
+      "include": "#keywords"
+    },
+    {
+      "include": "#known-types"
+    },
+    {
+      "include": "#known-operators"
+    },
+    {
+      "include": "#string"
+    },
+    {
+      "include": "#raw-string"
+    },
+    {
+      "include": "#triple-quoted-string"
+    },
+    {
+      "include": "#triple-quoted-rwa-string"
+    },
+    {
+      "include": "#block-comment"
+    },
+    {
+      "include": "#line-comment"
+    },
+    {
+      "include": "#int-no-prefix"
+    },
+    {
+      "include": "#int-bin"
+    },
+    {
+      "include": "#int-oct"
+    },
+    {
+      "include": "#int-hex"
+    },
+    {
+      "include": "#float"
+    },
+    {
+      "include": "#ident"
+    }
+  ],
+  "repository": {
+    "keywords": {
+      "patterns": [
+        {
+          "name": "keyword.control.dynasty",
+          "match": "\\b(if|for|while|fn|in|type|from|import|return|continue|break|else|var|inv|as)\\b"
+        }
+      ]
+    },
+    "known-types": {
+      "patterns": [
+        {
+          "name": "storage.type.builtin.dynasty",
+          "match": "\\b(int|int8|int16|int32|int64|float|float32|float64|string|void)\\b"
+        }
+      ]
+    },
+    "known-operators": {
+      "name": "keyword.operator.builtin.dynasty",
+      "match": "\\b(and|or|xor|not|mod|\\*|==|->|\\*\\*|/|\\+|-|&|\\||\\^|>>|<<|>|>=|!=|<=|<|=)\\b"
+    },
+    "string": {
+      "name": "string.quoted.double.dynasty",
+      "begin": "\"",
+      "end": "\"",
+      "patterns": [
+        {
+          "name": "constant.character.escape.dynasty",
+          "match": "\\\\."
+        }
+      ]
+    },
+    "raw-string": {
+      "name": "string.quoted.double.dynasty.raw",
+      "begin": "r\"",
+      "end": "\"",
+      "patterns": [
+        {
+          "name": "constant.character.escape.dynasty",
+          "match": "\\\\.|\"\""
+        }
+      ]
+    },
+    "triple-quoted-string": {
+      "name": "string.quoted.triple.dynasty",
+      "begin": "\"\"\"",
+      "end": "\"\"\"",
+      "patterns": [
+        {
+          "name": "constant.character.escape.dynasty",
+          "match": "\\\\.|[\n\r]"
+        }
+      ]
+    },
+    "triple-quoted-raw-string": {
+      "name": "string.quoted.triple.dynasty.raw",
+      "begin": "r\"\"\"",
+      "end": "\"\"\"",
+      "patterns": [
+        {
+          "name": "constant.character.escape.dynasty",
+          "match": "[\n\r]"
+        }
+      ]
+    },
+    "block-comment": {
+      "name": "comment.block.dynasty",
+      "begin": "#-",
+      "end": "-#",
+      "applyEndPatternLast": 1,
+      "patterns": [
+        {
+          "name": "comment.block.escaping",
+          "match": "[\n\r]"
+        }
+      ]
+    },
+    "line-comment": {
+      "name": "comment.line.dynasty",
+      "begin": "#",
+      "end": "$"
+    },
+    "int-no-prefix": {
+      "name": "constant.numeric.integer.no-prefix.dynasty",
+      "match": "(0|[1-9][_0-9]*)(i(8|16|32|64))?",
+      "captures": {
+        "2": {
+          "name": "meta.type.annotation.numeric.dynasty"
+        }
+      }
+    },
+    "int-bin": {
+      "name": "constant.numeric.integer.bin.dynasty",
+      "match": "0b[_01]*(i(8|16|32|64))?",
+      "captures": {
+        "1": {
+          "name": "meta.type.annotation.numeric.dynasty"
+        }
+      }
+    },
+    "int-oct": {
+      "name": "constant.numeric.integer.oct.dynasty",
+      "match": "0[_0-7]+(i(8|16|32|64))?",
+      "captures": {
+        "1": {
+          "name": "meta.type.annotation.numeric.dynasty"
+        }
+      }
+    },
+    "int-hex": {
+      "name": "constant.numeric.integer.hex.dynasty",
+      "match": "0x[_0-9a-fA-F]+(i(8|16|32|64))?",
+      "captures": {
+        "1": {
+          "name": "meta.type.annotation.numeric.dynasty"
+        }
+      }
+    },
+    "float": {
+      "name": "constant.numeric.float.dynasty",
+      "match": "([0-9][_0-9]*\\.[_0-9]*|\\.[_0-9]+)([eE][+-]?(0|[1-9][_0-9]*))?[fd]?"
+    },
+    "ident": {
+      "name": "variable.name.dynasty",
+      "match": "([a-zA-Z_][a-zA-Z0-9_]*\\.)*[a-z_][a-zA-Z0-9_]*"
+    }
+  },
+  "scopeName": "source.dynastylang"
+}
